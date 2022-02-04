@@ -24,7 +24,7 @@ result = False
 
 # get initial data pools
 with st.spinner('Wait for it...'):
-    r = rq.get('https://api.covalenthq.com/v1/43114/xy=k/traderjoe/pools/?quote-currency=USD&format=JSON&&page-size=99999&key=ckey_4e7ba38c8e50410a92ed0989d8f')
+    r = rq.get('https://api.covalenthq.com/v1/43114/xy=k/traderjoe/pools/?quote-currency=USD&format=JSON&&page-size=99999&key={}'.format(st.secrets.api_key))
     data_items = r.json()["data"]["items"]
     token0 = ''
     token1 = ''
@@ -59,7 +59,7 @@ with st.form("my_form"):
     submitted = st.form_submit_button("Submit")
     if submitted:
         result = False
-        r = rq.get('https://api.covalenthq.com/v1/43114/xy=k/traderjoe/pools/address/{}/?quote-currency=USD&format=JSON&key=ckey_4e7ba38c8e50410a92ed0989d8f'.format(select_pools[option]))
+        r = rq.get('https://api.covalenthq.com/v1/43114/xy=k/traderjoe/pools/address/{}/?quote-currency=USD&format=JSON&key={}'.format(select_pools[option], st.secrets.api_key))
         data_address = r.json()
         estimated_fee = (number / data_address["data"]["items"][0]["total_liquidity_quote"])*data_address["data"]["items"][0]["fee_24h_quote"]
         metric1, metric2, metric3, metric4 = st.columns(4)
