@@ -8,7 +8,7 @@ import altair as alt
 # configuration theme
 st.set_page_config(layout="wide")
 st.header('Traderjoe Fees Calculator')
-
+st.markdown('Data Powered By [@Covalent](https://www.covalenthq.com/ "CovalentHQ")')
 # initiate global variables
 data_pools = []
 select_pools = {}
