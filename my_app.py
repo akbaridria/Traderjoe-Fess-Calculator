@@ -85,9 +85,9 @@ if result :
     with st.expander("See Details {} Pools".format(option)):
         metric1, metric2, metric3, metric4 = st.columns(4)
         with metric1:
-            st.metric(label="Totao Liquidity", value="$ {:,.2f}".format(data_address["data"]["items"][0]["total_liquidity_quote"]), delta="{:,.2f}".format(data_address["data"]["items"][0]["total_liquidity_quote"] - liquidity["liquidity"][len(liquidity["liquidity"])-2]))
+            st.metric(label="Total Liquidity", value="$ {:,.2f}".format(liquidity["liquidity"][len(liquidity["liquidity"])-1]), delta="{:,.2f}".format(liquidity["liquidity"][len(liquidity["liquidity"])-1] - liquidity["liquidity"][len(liquidity["liquidity"])-2]))
         with metric2:
-            st.metric(label="Daily Volumes", value="$ {:,.2f}".format(data_address["data"]["items"][0]["volume_24h_quote"]), delta="{:,.2f}".format(data_address["data"]["items"][0]["volume_24h_quote"] - volumes["volumes"][len(volumes["volumes"])-2]))
+            st.metric(label="Daily Volumes", value="$ {:,.2f}".format(volumes["volumes"][len(volumes["volumes"])-1]), delta="{:,.2f}".format(volumes["volumes"][len(volumes["volumes"])-1] - volumes["volumes"][len(volumes["volumes"])-2]))
         with metric3:
             st.metric(label="APY", value="{:,.2f} %".format(data_address["data"]["items"][0]["annualized_fee"]*100))
         with metric4:
